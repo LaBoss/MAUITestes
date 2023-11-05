@@ -1,3 +1,5 @@
+using Prism.Navigation;
+
 namespace PrismBug;
 
 public partial class StartPage : ContentPage
@@ -14,6 +16,6 @@ public partial class StartPage : ContentPage
     protected async override void OnAppearing()
     {
         await Task.Delay(1000);
-        await _nav.NavigateAsync("Login");
+        await _nav.NavigateAsync("nav/Login");
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using Prism.Navigation;
 
 namespace PrismBug
 {
@@ -20,7 +21,10 @@ namespace PrismBug
                         c.RegisterForNavigation<Setting>();
                         c.RegisterForNavigation<MainPage>();
                     })
-                    .OnAppStart("StartPage");
+                    .OnAppStart((c, n) =>
+                    {
+                        return n.CreateBuilder().AddSegment("StartPage").NavigateAsync(HandleNavigationError);
+                    });
                 })
                 .ConfigureFonts(fonts =>
                 {
@@ -34,5 +38,11 @@ namespace PrismBug
 
             return builder.Build();
         }
+        private static void HandleNavigationError(Exception ex)
+        {
+            Console.WriteLine(ex);
+            System.Diagnostics.Debugger.Break();
+        }
     }
+
 }

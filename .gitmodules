@@ -1,0 +1,3 @@
+[submodule "deps/Prism"]
+	path = deps/Prism
+	url = https://github.com/PrismLibrary/Prism.git

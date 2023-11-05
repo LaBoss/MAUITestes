@@ -7,22 +7,35 @@
      Spacing="25"
      Padding="30,0"
      VerticalOptions="Center">
+        <Frame>
+            <Grid RowDefinitions="auto, auto, auto, auto">
+                <Border Stroke="#C49B33"
+                        StrokeThickness="4"
+                        StrokeShape="RoundRectangle 40,0,0,40"
+                        Background="#2B0B98"
+                        Padding="16,8"
+                        HorizontalOptions="Center" Grid.Row="0">
+                    <Label Text=".NET MAUI"
+                           TextColor="White"
+                           FontSize="18"
+                           FontAttributes="Bold" />
+                </Border>
 
-      
-        <Label
-         Text="Login"
-         FontSize="18"
-         HorizontalOptions="Center" />
+                <Label Grid.Row="1"
+                         Text="Login"
+                         FontSize="18"
+                         HorizontalOptions="Center" />
 
-        <Button
-         Text="Login"
-         Clicked="OnLogin"
-         HorizontalOptions="Center" />
+                <Button Grid.Row="2"
+                         Text="Login"
+                         Clicked="OnLogin"
+                         HorizontalOptions="Center" />
 
-        <Button
-            Text="Settings"
-         Clicked="OnSettings"
-         HorizontalOptions="Center" />
-
+                <Button Grid.Row="3"
+                        Text="Settings"
+                     Clicked="OnSettings"
+                     HorizontalOptions="Center" />
+            </Grid>
+        </Frame>
     </VerticalStackLayout>
 </ContentPage>

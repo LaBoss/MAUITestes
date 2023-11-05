@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net7.0-android;net7.0-ios;net7.0-maccatalyst</TargetFrameworks>
-		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.19041.0</TargetFrameworks>
+		<TargetFrameworks>net8.0-android;net8.0-ios;net8.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net8.0-windows10.0.19041.0</TargetFrameworks>
 		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
 		<!-- <TargetFrameworks>$(TargetFrameworks);net7.0-tizen</TargetFrameworks> -->
 		<OutputType>Exe</OutputType>
@@ -49,8 +49,26 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
-		<PackageReference Include="Prism.DryIoc.Maui" Version="8.1.273-pre" />
+	  <AndroidResource Remove="deps\**" />
+	  <Compile Remove="deps\**" />
+	  <EmbeddedResource Remove="deps\**" />
+	  <MauiCss Remove="deps\**" />
+	  <MauiXaml Remove="deps\**" />
+	  <None Remove="deps\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0-rc.2.23479.6" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="deps\Prism\src\Maui\Prism.DryIoc.Maui\Prism.DryIoc.Maui.csproj" />
+	  <ProjectReference Include="deps\Prism\src\Maui\Prism.Maui.Rx\Prism.Maui.Rx.csproj" />
+	  <ProjectReference Include="deps\Prism\src\Maui\Prism.Maui\Prism.Maui.csproj" />
+	  <ProjectReference Include="deps\Prism\src\Prism.Core\Prism.Core.csproj" />
+	  <ProjectReference Include="deps\Prism\src\Prism.Events\Prism.Events.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
